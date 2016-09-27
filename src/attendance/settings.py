@@ -36,7 +36,7 @@ SERVER_EMAIL = 'django@qraz.at'
 if 'DJANGO_INTERNAL_IPS' in os.environ:
     INTERNAL_IPS = IPList(os.environ.get('DJANGO_INTERNAL_IPS', '127.0.0.1,::1').split(','))
 
-ALLOWED_HOSTS = ['attendance.openservices.at']
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.auth',
