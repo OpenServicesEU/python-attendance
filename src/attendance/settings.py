@@ -160,13 +160,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # The URL of the LDAP server.
-LDAP_AUTH_URL = 'ldap://ldap.medunigraz.at:389'
+LDAP_AUTH_URL = os.environ.get('DJANGO_LDAP_AUTH_URL')
 
 # Initiate TLS on connection.
-LDAP_AUTH_USE_TLS = True
+LDAP_AUTH_USE_TLS = 'DJANGO_LDAP_AUTH_USE_TLS' in os.environ
 
 # The LDAP search base for looking up users.
-LDAP_AUTH_SEARCH_BASE = 'ou=pers,ou=usr,o=mug'
+LDAP_AUTH_SEARCH_BASE = os.environ.get('DJANGO_LDAP_AUTH_SEARCH_BASE')
 
 # The LDAP class that represents a user.
 LDAP_AUTH_OBJECT_CLASS = 'inetOrgPerson'
@@ -209,8 +209,8 @@ LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = None
 
 # The LDAP username and password of a user for authenticating the `ldap_sync_users`
 # management command. Set to None if you allow anonymous queries.
-LDAP_AUTH_CONNECTION_USERNAME = None
-LDAP_AUTH_CONNECTION_PASSWORD = None
+LDAP_AUTH_CONNECTION_USERNAME = os.environ.get('DJANGO_LDAP_AUTH_CONNECTION_USERNAME', None)
+LDAP_AUTH_CONNECTION_PASSWORD = os.environ.get('DJANGO_LDAP_AUTH_CONNECTION_PASSWORD', None)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
