@@ -6,6 +6,9 @@ from django.utils import timezone
 class Student(models.Model):
     matriculation = models.PositiveIntegerField(primary_key=True)
 
+    class Meta:
+        ordering = ['matriculation']
+
     def __str__(self):
         return '{s.matriculation}'.format(s=self)
 
@@ -27,6 +30,9 @@ class Entry(models.Model):
     auto = models.BooleanField(
         default=False
     )
+
+    class Meta:
+        ordering = ['time']
 
     @staticmethod
     def pre_save(sender, instance, **kwargs):
