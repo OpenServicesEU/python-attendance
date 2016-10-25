@@ -113,6 +113,10 @@ DATABASES = {
             'DJANGO_DATABASES_DEFAULT_HOST',
             ''
         ),
+        'PORT': int(os.environ.get(
+            'DJANGO_DATABASES_DEFAULT_PORT',
+            '0'
+        )),
     }
 }
 
